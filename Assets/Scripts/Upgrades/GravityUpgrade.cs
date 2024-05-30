@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityUpgrade : BaseUpgrades
+public class GravityUpgrade : BaseUpgrade
 {
     protected PlaneController planeController;
     protected float upgradeGravity;

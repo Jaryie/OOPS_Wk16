@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class BaseUpgrade
 {
-    public Button upgradeButton;
+    public Button upgradebutton;
 
     protected int cost = 1;
 
@@ -12,26 +13,38 @@ public abstract class BaseUpgrade
 
     public abstract string UpgradeName();
 
-
-
-
-
-
-
+    public void SetButton(Button btn)
+    {
+        upgradebutton = btn;
+    }
     public void CheckButtonCost(int money)
     {
-        if (upgradeButton == null)
+        if (upgradebutton == null)
         {
-            return
+            return;
         }
 
+        Debug.Log(UpgradeName());
         if (money < cost)
         {
-            upgradeButtone.interactable = false;
+            upgradebutton.interactable = false;
         }
         else
         {
-            upgradeButton.interactable = true;
+            upgradebutton.interactable = true;
         }
     }
+
+    public bool PayForUpgrade(ref int money)
+    {
+        if (money >= cost)
+        {
+            money -= cost;
+
+            return true;
+        }
+
+        return false;
+    }
+
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI
+using UnityEngine.UI;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -27,7 +27,7 @@ public class UpgradeManager : MonoBehaviour
             money = value; 
             foreach (var upgrade in upgrades)
             {
-                upgradee.CheckButtonCost(value);
+                upgrade.CheckButtonCost(value);
             }
         }  
     }
@@ -35,9 +35,9 @@ public class UpgradeManager : MonoBehaviour
 
    private void Start()
     {
-        planeController = FindObjectOfType<planeController>();
+        planeController = FindObjectOfType<PlaneController>();
 
-        upgrades = new List<BaseUpgrades>();
+        upgrades = new List<BaseUpgrade>();
 
         upgrades.Add(new SpeedUpgrade(planeController, 5, 500f));
         upgrades.Add(new SpeedUpgrade(planeController, 8, 1000f));
@@ -74,8 +74,6 @@ public class UpgradeManager : MonoBehaviour
             go.onClick.AddListener(() => PurchaseUpgrade(x));
         }
     }
-}
-
 
     public void PurchaseUpgrade(int index)
     {
